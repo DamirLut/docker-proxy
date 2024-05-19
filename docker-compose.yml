@@ -1,0 +1,11 @@
+services:
+  proxy:
+    container_name: docker-proxy
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./config.json:/app/config.json
+    restart: on-failure
